@@ -44,6 +44,23 @@ namespace WinFormUI
       savingsTransactionsListBox.DataSource = customer.SavingsAccount.Transactions;
       checkingAmountLabel.Text = string.Format("{0:C2}", customer.CheckingAccount.Balance);
       savingsAmountLabel.Text = string.Format("{0:C2}", customer.SavingsAccount.Balance);
+
+      customer.CheckingAccount.TransactionApprovedEvent += CheckingAccount_TransactionApprovedEvent;
+      customer.SavingsAccount.TransactionApprovedEvent += SavingsAccount_TransactionApprovedEvent;
+    }
+
+    private void SavingsAccount_TransactionApprovedEvent(object sender, string e)
+    {
+      savingsTransactionsListBox.DataSource = null;
+      savingsTransactionsListBox.DataSource = customer.CheckingAccount.Transactions;
+      savingsAmountLabel.Text = string.Format("{0:C2}", customer.SavingsAccount.Balance);
+    }
+
+    private void CheckingAccount_TransactionApprovedEvent(object sender, string e)
+    {
+      checkingTransactionsListBox.DataSource = null;
+      checkingTransactionsListBox.DataSource = customer.CheckingAccount.Transactions;
+      checkingAmountLabel.Text = string.Format("{0:C2}", customer.CheckingAccount.Balance);
     }
 
     private void recordTransactionsButton_Click(object sender, EventArgs e)
