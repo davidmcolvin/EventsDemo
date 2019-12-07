@@ -95,6 +95,7 @@
       this.makePurchaseButton.TabIndex = 13;
       this.makePurchaseButton.Text = "Make Purchase";
       this.makePurchaseButton.UseVisualStyleBackColor = true;
+      this.makePurchaseButton.Click += new System.EventHandler(this.makePurchaseButton_Click);
       // 
       // Transactions
       // 

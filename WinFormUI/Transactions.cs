@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,20 @@ namespace WinFormUI
 {
   public partial class Transactions : Form
   {
-    public Transactions()
+    private Customer _customer;
+
+    public Transactions(Customer customer)
     {
       InitializeComponent();
+      _customer = customer;
+
+      customerValueLabel.Text = _customer.CustomerName;
+    }
+
+    private void makePurchaseButton_Click(object sender, EventArgs e)
+    {
+      bool paymentResult = _customer.CheckingAccount.MakePayment("Credit Card Purchase", amountNumericUpDown.Value, _customer.SavingsAccount);
+      amountNumericUpDown.Value = 0;
     }
   }
 }
