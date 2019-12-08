@@ -35,6 +35,7 @@
       this.headerAmountLabel = new System.Windows.Forms.Label();
       this.amountNumericUpDown = new System.Windows.Forms.NumericUpDown();
       this.makePurchaseButton = new System.Windows.Forms.Button();
+      this.overdraftLabel = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.amountNumericUpDown)).BeginInit();
       this.SuspendLayout();
       // 
@@ -82,6 +83,11 @@
       // 
       this.amountNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.amountNumericUpDown.Location = new System.Drawing.Point(177, 132);
+      this.amountNumericUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
       this.amountNumericUpDown.Name = "amountNumericUpDown";
       this.amountNumericUpDown.Size = new System.Drawing.Size(120, 26);
       this.amountNumericUpDown.TabIndex = 8;
@@ -97,12 +103,26 @@
       this.makePurchaseButton.UseVisualStyleBackColor = true;
       this.makePurchaseButton.Click += new System.EventHandler(this.makePurchaseButton_Click);
       // 
+      // overdraftLabel
+      // 
+      this.overdraftLabel.AutoSize = true;
+      this.overdraftLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.overdraftLabel.ForeColor = System.Drawing.Color.Red;
+      this.overdraftLabel.Location = new System.Drawing.Point(75, 262);
+      this.overdraftLabel.Name = "overdraftLabel";
+      this.overdraftLabel.Size = new System.Drawing.Size(161, 21);
+      this.overdraftLabel.TabIndex = 14;
+      this.overdraftLabel.Text = "You are overdrafting! ";
+      this.overdraftLabel.Visible = false;
+      this.overdraftLabel.Click += new System.EventHandler(this.overdraftLabel_Click);
+      // 
       // Transactions
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.ClientSize = new System.Drawing.Size(318, 292);
+      this.Controls.Add(this.overdraftLabel);
       this.Controls.Add(this.makePurchaseButton);
       this.Controls.Add(this.amountNumericUpDown);
       this.Controls.Add(this.headerAmountLabel);
@@ -111,7 +131,9 @@
       this.Controls.Add(this.headerCreditCardMachineLabel);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Transactions";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Transactions";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Transactions_FormClosing);
       ((System.ComponentModel.ISupportInitialize)(this.amountNumericUpDown)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -126,5 +148,6 @@
     private System.Windows.Forms.Label headerAmountLabel;
     private System.Windows.Forms.NumericUpDown amountNumericUpDown;
     private System.Windows.Forms.Button makePurchaseButton;
+    private System.Windows.Forms.Label overdraftLabel;
   }
 }

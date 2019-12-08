@@ -42,6 +42,7 @@
       this.checkingTransactionsListBox = new System.Windows.Forms.ListBox();
       this.savingsTransactionsListBox = new System.Windows.Forms.ListBox();
       this.recordTransactionsButton = new System.Windows.Forms.Button();
+      this.denyOverdraftCheckBox = new System.Windows.Forms.CheckBox();
       this.SuspendLayout();
       // 
       // headerBankingDemoLabel
@@ -141,7 +142,7 @@
       // 
       this.headerSavingsTransactionsLabel.AutoSize = true;
       this.headerSavingsTransactionsLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.headerSavingsTransactionsLabel.Location = new System.Drawing.Point(562, 87);
+      this.headerSavingsTransactionsLabel.Location = new System.Drawing.Point(598, 87);
       this.headerSavingsTransactionsLabel.Name = "headerSavingsTransactionsLabel";
       this.headerSavingsTransactionsLabel.Size = new System.Drawing.Size(168, 21);
       this.headerSavingsTransactionsLabel.TabIndex = 9;
@@ -154,7 +155,7 @@
       this.checkingTransactionsListBox.ItemHeight = 20;
       this.checkingTransactionsListBox.Location = new System.Drawing.Point(263, 125);
       this.checkingTransactionsListBox.Name = "checkingTransactionsListBox";
-      this.checkingTransactionsListBox.Size = new System.Drawing.Size(297, 264);
+      this.checkingTransactionsListBox.Size = new System.Drawing.Size(321, 264);
       this.checkingTransactionsListBox.TabIndex = 10;
       // 
       // savingsTransactionsListBox
@@ -162,15 +163,15 @@
       this.savingsTransactionsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.savingsTransactionsListBox.FormattingEnabled = true;
       this.savingsTransactionsListBox.ItemHeight = 20;
-      this.savingsTransactionsListBox.Location = new System.Drawing.Point(566, 125);
+      this.savingsTransactionsListBox.Location = new System.Drawing.Point(602, 125);
       this.savingsTransactionsListBox.Name = "savingsTransactionsListBox";
-      this.savingsTransactionsListBox.Size = new System.Drawing.Size(297, 264);
+      this.savingsTransactionsListBox.Size = new System.Drawing.Size(308, 264);
       this.savingsTransactionsListBox.TabIndex = 11;
       // 
       // recordTransactionsButton
       // 
       this.recordTransactionsButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.recordTransactionsButton.Location = new System.Drawing.Point(49, 292);
+      this.recordTransactionsButton.Location = new System.Drawing.Point(51, 308);
       this.recordTransactionsButton.Name = "recordTransactionsButton";
       this.recordTransactionsButton.Size = new System.Drawing.Size(117, 51);
       this.recordTransactionsButton.TabIndex = 12;
@@ -178,12 +179,24 @@
       this.recordTransactionsButton.UseVisualStyleBackColor = true;
       this.recordTransactionsButton.Click += new System.EventHandler(this.recordTransactionsButton_Click);
       // 
+      // denyOverdraftCheckBox
+      // 
+      this.denyOverdraftCheckBox.AutoSize = true;
+      this.denyOverdraftCheckBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.denyOverdraftCheckBox.Location = new System.Drawing.Point(12, 257);
+      this.denyOverdraftCheckBox.Name = "denyOverdraftCheckBox";
+      this.denyOverdraftCheckBox.Size = new System.Drawing.Size(143, 25);
+      this.denyOverdraftCheckBox.TabIndex = 13;
+      this.denyOverdraftCheckBox.Text = "Deny Overdrafts";
+      this.denyOverdraftCheckBox.UseVisualStyleBackColor = true;
+      // 
       // Dashboard
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
-      this.ClientSize = new System.Drawing.Size(880, 450);
+      this.ClientSize = new System.Drawing.Size(932, 450);
+      this.Controls.Add(this.denyOverdraftCheckBox);
       this.Controls.Add(this.recordTransactionsButton);
       this.Controls.Add(this.savingsTransactionsListBox);
       this.Controls.Add(this.checkingTransactionsListBox);
@@ -199,7 +212,9 @@
       this.Controls.Add(this.headerBankingDemoLabel);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "Dashboard";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Banking Dashboard";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -220,6 +235,7 @@
     private System.Windows.Forms.ListBox checkingTransactionsListBox;
     private System.Windows.Forms.ListBox savingsTransactionsListBox;
     private System.Windows.Forms.Button recordTransactionsButton;
+    private System.Windows.Forms.CheckBox denyOverdraftCheckBox;
   }
 }
 

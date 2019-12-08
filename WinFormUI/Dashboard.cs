@@ -47,12 +47,20 @@ namespace WinFormUI
 
       customer.CheckingAccount.TransactionApprovedEvent += CheckingAccount_TransactionApprovedEvent;
       customer.SavingsAccount.TransactionApprovedEvent += SavingsAccount_TransactionApprovedEvent;
+      customer.CheckingAccount.OverdraftEvent += CheckingAccount_OverdraftEvent;
+    }
+
+    private void CheckingAccount_OverdraftEvent(object sender, OverdraftEventArgs e)
+    {
+      overdraftLabel.Text = $"You had an overdraft protection transfer of {string.Format("{0:C2}", e.AmountOverdrafted)}";
+      e.CancelTransaction = denyOverdraftCheckBox.Checked;
+      overdraftLabel.Visible = true;
     }
 
     private void SavingsAccount_TransactionApprovedEvent(object sender, string e)
     {
       savingsTransactionsListBox.DataSource = null;
-      savingsTransactionsListBox.DataSource = customer.CheckingAccount.Transactions;
+      savingsTransactionsListBox.DataSource = customer.SavingsAccount.Transactions;
       savingsAmountLabel.Text = string.Format("{0:C2}", customer.SavingsAccount.Balance);
     }
 
@@ -72,6 +80,13 @@ namespace WinFormUI
     private void overdraftLabel_Click(object sender, EventArgs e)
     {
       overdraftLabel.Visible = false;
+    }
+
+    private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      customer.CheckingAccount.TransactionApprovedEvent -= CheckingAccount_TransactionApprovedEvent;
+      customer.SavingsAccount.TransactionApprovedEvent -= SavingsAccount_TransactionApprovedEvent;
+      customer.CheckingAccount.OverdraftEvent -= CheckingAccount_OverdraftEvent;
     }
   }
 }
